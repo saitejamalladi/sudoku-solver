@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import classes from './Solve.module.css';
 import {solveSudoku} from '../../shared/utility';
-import {Backdrop, Button, Fade, Modal} from "@material-ui/core";
+import {Backdrop, Button, Modal} from "@material-ui/core";
+import Display from "../Display/Display";
 
 class Solve extends Component {
 	state = {
@@ -13,7 +14,7 @@ class Solve extends Component {
 	}
 	componentDidMount() {
 		this.lockCells();
-		setTimeout(this.handleSolve, 1000);
+		setTimeout(this.handleSolve, 2.5 * 1000);
 	}
 	lockCells = () => {
 		let locked = [];
@@ -48,52 +49,39 @@ class Solve extends Component {
 			this.setState({
 				error: "No Solution exists",
 				solved: true,
-				solvedGrid: []
+				solvedGrid: this.props.grid
 			})
 		}
 	};
-	getClassName = (row, col) => {
-		let clxList = [];
-		clxList.push(classes.Cell);
-		if(row%3 === 0) clxList.push(classes.Top);
-		if(col%3 === 0) clxList.push(classes.Left);
-		if(row === 8) clxList.push(classes.Bottom);
-		if(col === 8) clxList.push(classes.Right);
-		if(this.state.errorRow === row && this.state.errorCol === col) clxList.push(classes.Alert);
-		if(this.state.locked[row][col]) clxList.push(classes.Locked);
-		return clxList.join(" ");
-	}
 
 
 	render () {
+		let header = "Solving...";
+		let tryAgain = null;
+		if(this.state.solved) {
+			header = "Here we go!!!";
+			tryAgain =  (<Button
+				variant={"contained"}
+				color={"primary"}
+				className={classes.PrimaryButton}
+				onClick={this.props.reset}
+			>
+				Solve New Puzzle
+			</Button>);
+		}
 		return (
 			<div className={classes.Solve}>
-				<div>
-					<Button variant={"contained"} color={"primary"} onClick={this.props.reset}>Solve New Puzzle</Button>
-				</div>
+				{tryAgain}
 				<h3>
-					Here we go!!!!
+					{header}
 				</h3>
 				{this.state.error ? <p style={{color: 'red'}}>{this.state.error}</p>: null }
 				<div>
-					<table>
 					{
-						this.state.solvedGrid.map((row, rowIndex) => (
-							<tr key={rowIndex}>
-								{row.map((col, colIndex) => (
-									<td
-										key={rowIndex+"-"+colIndex}
-										onChange={(e) => this.handleChange(e, rowIndex, colIndex)}
-										className={this.getClassName(rowIndex, colIndex)}
-									>
-										{col}
-									</td>
-								))}
-								<br/>
-							</tr>
-						))
+						this.state.solved
+							? <Display grid={this.state.solvedGrid} locked={this.state.locked} />
+							: <Display grid={this.props.grid} locked={this.state.locked} />
 					}
-					</table>
 					<Modal
 						aria-labelledby="transition-modal-title"
 						aria-describedby="transition-modal-description"
@@ -105,11 +93,9 @@ class Solve extends Component {
 							timeout: 500,
 						}}
 					>
-						<Fade in={!this.state.solved}>
-							<div className={classes.Confirmation}>
-								<h2>Loading.....</h2>
-							</div>
-						</Fade>
+						<div className={classes.Confirmation}>
+							<h2>Solving.....</h2>
+						</div>
 					</Modal>
 				</div>
 			</div>

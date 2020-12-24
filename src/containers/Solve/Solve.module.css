@@ -12,37 +12,23 @@
 .Solve ul li {
 	margin: 5px;
 }
-.Cell {
-	border: 1px dotted #000;
-	height: 30px;
-	width: 30px;
-	font-size: 20px;
-	text-align: center;
-}
-.Left {
-	border-left: 2px solid #000!important;
-}
-.Top {
-	border-top: 2px solid #000!important;
-}
-.Right {
-	border-right: 2px solid #000!important;
-}
-.Bottom {
-	border-bottom: 2px solid #000!important;
-}
-.Alert {
-	border: 2px solid #F00 !important;
-}
-.Locked {
-	background-color: lightgrey;
-}
 .Modal {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 .Confirmation {
-	width: 500px;
-	background-color: white;
+	text-align: center;
+	color: white;
+	outline: 0;
+	border: 0;
+}
+.PrimaryButton {
+	background-color: #04b4e0 !important;
+}
+@media only screen and (min-width: 950px) {
+	.Confirmation {
+		color: white;
+		width: 30%;
+	}
 }

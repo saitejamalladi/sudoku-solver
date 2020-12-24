@@ -13,10 +13,10 @@ class Main extends Component {
 					direction={"row"}
 					justify="space-around"
 				>
-					<Grid item xs={12} sm={6}>
+					<Grid item xs={12} md={7}>
 						<Description/>
 					</Grid>
-					<Grid item xs={12} sm={6}>
+					<Grid item xs={12} md={5}>
 						<Sudoku/>
 					</Grid>
 				</Grid>

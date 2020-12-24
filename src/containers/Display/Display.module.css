@@ -1,0 +1,43 @@
+.Cell {
+	border: 1px dotted #000;
+	height: 15px;
+	width: 15px;
+	font-size: 13px;
+	text-align: center;
+}
+.Left {
+	border-left: 2px solid #000!important;
+}
+.Top {
+	border-top: 2px solid #000!important;
+}
+.Right {
+	border-right: 2px solid #000!important;
+}
+.Bottom {
+	border-bottom: 2px solid #000!important;
+}
+.Locked {
+	background-color: lightgrey;
+}
+
+@media only screen and (min-width: 280px) {
+	.Cell {
+		font-size: 15px;
+		height: 20px;
+		width: 20px;
+	}
+}
+@media only screen and (min-width: 600px) {
+	.Cell {
+		font-size: 20px;
+		height: 25px;
+		width: 25px;
+	}
+}
+@media only screen and (min-width: 950px) {
+	.Cell {
+		height: 30px;
+		width: 30px;
+	}
+}

@@ -2,5 +2,13 @@
 	margin: 10px;
 	padding: 10px;
 	text-align: left;
-	border-right: 3px solid black;
+	border-right: 0;
+	border-bottom: 2px dashed #7ebfd0;
+}
+
+@media only screen and (min-width: 1024px) {
+	.Description {
+		border-bottom: 0;
+		border-right: 2px solid #7ebfd0;
+	}
 }

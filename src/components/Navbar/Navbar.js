@@ -20,15 +20,17 @@ const useStyles = makeStyles(theme => ({
 	},
 	title: {
 		flexGrow: 1,
-		textAlign: 'right',
 		fontSize: '30px',
+		textAlign: 'center',
 		fontWeight: 600,
+		[theme.breakpoints.up('md')]: {
+			textAlign: 'right',
+		},
 	},
 }));
 
 const Navbar = () => {
 	const classes = useStyles();
-
 	return (
 		<div className={classes.root}>
 			<AppBar className={classes.appBar}>
