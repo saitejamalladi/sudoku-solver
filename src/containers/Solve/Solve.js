@@ -66,7 +66,7 @@ class Solve extends Component {
 				className={classes.PrimaryButton}
 				onClick={this.props.reset}
 			>
-				Solve New Puzzle
+				Try new one?
 			</Button>);
 		}
 		return (

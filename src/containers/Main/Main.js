@@ -19,6 +19,9 @@ class Main extends Component {
 					<Grid item xs={12} md={5}>
 						<Sudoku/>
 					</Grid>
+					<p>
+						<span>Reach out to me @<a target={"_blank"} rel="noreferrer" href="https://saiteja-malladi.web.app">Sai Teja Malladi</a></span>
+					</p>
 				</Grid>
 			</div>
 		);

@@ -84,7 +84,7 @@ class InputGrid extends Component {
 		return (
 			<div className={classes.InputGrid}>
 				<h3>
-					Enter the numbers and click Submit to solve the sudoku
+					Enter the numbers and click Solve
 				</h3>
 				{(this.state.errorRow || this.state.errorCol)
 					? <p style={{color: 'red'}}>Given number may not be a proper entry</p>
